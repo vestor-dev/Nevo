@@ -146,6 +146,15 @@ pub struct EmergencyWithdrawal {
 
 #[contracttype]
 #[derive(Clone, Debug, Eq, PartialEq)]
+pub struct PoolContribution {
+    pub pool_id: u64,
+    pub contributor: Address,
+    pub amount: i128,
+    pub asset: Address,
+}
+
+#[contracttype]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum StorageKey {
     Pool(u64),
     PoolState(u64),
@@ -154,6 +163,7 @@ pub enum StorageKey {
     CampaignMetrics(BytesN<32>),
     CampaignDonor(BytesN<32>, Address),
     Contribution(BytesN<32>, Address),
+    PoolContribution(u64, Address),
 
     NextPoolId,
     IsPaused,
